@@ -1,4 +1,4 @@
-rootProject.name = "sourdough-kt"
+rootProject.name = "portfolio-backend"
 
 include("app")
 include("api")
