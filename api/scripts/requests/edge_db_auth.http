@@ -1,12 +1,50 @@
-// EdgeDB Auth Token Verification
+### EdgeDB Auth Token Verification (Via EdgeDB HTTP API)
 
 < {%
-    request.variables.set("code", "")
-    request.variables.set("verifier", "")
+	request.variables.set("code", "")
+	request.variables.set("verifier", "")
 %}
 
-GET {{edge_db_base_url}}/db/edgedb/ext/auth/token?code={{code}}&verifier={{verifier}}
+GET {{edge_db_api_url}}/db/edgedb/ext/auth/token?code={{code}}&verifier={{verifier}}
 Content-Type: application/json
 Accept: application/json
 
-###
+### EdgeDb Sign In Complete Flow
+
+< {%
+	request.variables.set("email", "")
+	request.variables.set("password", "")
+%}
+
+POST {{portfolio_api_url}}/auth/sign_in
+Content-Type: application/json
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+
+### EdgeDb Sign Up Complete Flow
+
+< {%
+	function randomString(len) {
+		const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		let randomString = '';
+		for (let i = 0; i < len; i++) {
+			let randomPoz = Math.floor(Math.random() * charSet.length);
+			randomString += charSet.substring(randomPoz, randomPoz + 1);
+		}
+		return randomString;
+	}
+
+	request.variables.set("email", `admin+${randomString(10)}@example.com`)
+	request.variables.set("password", "test")
+%}
+
+POST {{portfolio_api_url}}/auth/sign_up
+Content-Type: application/json
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
