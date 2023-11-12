@@ -1,0 +1,12 @@
+// EdgeDB Auth Token Verification
+
+< {%
+    request.variables.set("code", "")
+    request.variables.set("verifier", "")
+%}
+
+GET {{edge_db_base_url}}/db/edgedb/ext/auth/token?code={{code}}&verifier={{verifier}}
+Content-Type: application/json
+Accept: application/json
+
+###

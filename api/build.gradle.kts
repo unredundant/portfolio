@@ -15,6 +15,7 @@ sourdoughApp {
 dependencies {
   implementation(projects.domain)
   implementation(projects.persistence)
+  implementation(projects.client)
 
   // Logging
   implementation(libs.logback.classic)
@@ -27,6 +28,9 @@ dependencies {
 
   // Datetime
   implementation(libs.ktx.datetime)
+
+  // Logging
+  implementation(libs.kermit)
 }
 
 testing {

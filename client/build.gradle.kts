@@ -9,6 +9,14 @@ plugins {
   id("java-library")
 }
 
+dependencies {
+  // Logging
+  implementation(libs.kermit)
+
+  // Ktor Client
+  implementation(libs.bundles.ktor.client)
+}
+
 // Change Me 🍞
 sourdoughLibrary {
   githubOrg.set("bkbnio")

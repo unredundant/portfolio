@@ -129,6 +129,27 @@ dependencyResolutionManagement {
         )
       )
 
+      // Ktor Client
+      library("ktor-client-core", "io.ktor", "ktor-client-core").version(ktorVersion)
+      library("ktor-client-cio", "io.ktor", "ktor-client-cio").version(ktorVersion)
+      library("ktor-client-logging", "io.ktor", "ktor-client-logging").version(ktorVersion)
+      library("ktor-client-encoding", "io.ktor", "ktor-client-encoding").version(ktorVersion)
+      library("ktor-client-content-negotiation", "io.ktor", "ktor-client-content-negotiation").version(ktorVersion)
+      library("ktor-serialization-kotlinx-json", "io.ktor", "ktor-serialization-kotlinx-json").version(ktorVersion)
+      library("ktor-client-serialization", "io.ktor", "ktor-client-serialization").version(ktorVersion)
+      bundle(
+        "ktor-client",
+        listOf(
+          "ktor-client-core",
+          "ktor-client-cio",
+          "ktor-client-logging",
+          "ktor-client-encoding",
+          "ktor-client-content-negotiation",
+          "ktor-serialization-kotlinx-json",
+          "ktor-client-serialization",
+        )
+      )
+
       // Postgres Driver
       library("postgres-driver", "org.postgresql", "postgresql").version(postgresDriverVersion)
 
