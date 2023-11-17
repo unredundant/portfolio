@@ -23,11 +23,8 @@ object ProjectsView : View {
               +"Projects"
             }
             p(classes = "subtitle") {
-              +"I’m Ryan"
-            }
-            p(classes = "subtitle") {
               +"""
-                Occasionally I write things, more often I code things.
+                Wee little curiosities
               """.trimIndent()
             }
           }

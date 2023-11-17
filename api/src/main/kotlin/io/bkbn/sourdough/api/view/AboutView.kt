@@ -20,14 +20,11 @@ object AboutView : View {
           div(classes = "container") {
             NavbarComponent()
             h1(classes = "title") {
-              +"About"
-            }
-            p(classes = "subtitle") {
-              +"I’m Ryan"
+              +"About Me"
             }
             p(classes = "subtitle") {
               +"""
-                Occasionally I write things, more often I code things.
+                Don't worry about it
               """.trimIndent()
             }
           }

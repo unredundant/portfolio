@@ -7,6 +7,7 @@ import io.ktor.server.application.call
 import io.ktor.server.html.respondHtml
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
+import kotlinx.html.a
 import kotlinx.html.body
 import kotlinx.html.button
 import kotlinx.html.classes
@@ -38,9 +39,11 @@ object HomeView : View {
               """.trimIndent()
             }
             div(classes = "centered-image-container") {
-              img(classes = "centered-image rounded-corners") {
-                src = "/static/images/bat-eating-banana.jpg"
-                alt = "A bat eating a banana"
+              a(href = "https://www.youtube.com/watch?v=S8zhnXZdTFM", target = "_blank") {
+                img(classes = "centered-image rounded-corners") {
+                  src = "/static/images/bat-eating-banana.jpg"
+                  alt = "A bat eating a banana"
+                }
               }
             }
             div(classes = "code-block") {

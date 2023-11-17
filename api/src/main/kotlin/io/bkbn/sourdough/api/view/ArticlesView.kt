@@ -22,14 +22,11 @@ object ArticlesView : View {
           div(classes = "container") {
             NavbarComponent()
             h1(classes = "title") {
-              +"Articles"
-            }
-            p(classes = "subtitle") {
-              +"I’m Ryan"
+              +"Ramblings"
             }
             p(classes = "subtitle") {
               +"""
-                Occasionally I write things, more often I code things.
+                You probably don't need to read these
               """.trimIndent()
             }
           }
