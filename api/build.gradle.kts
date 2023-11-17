@@ -8,6 +8,12 @@ plugins {
   application
 }
 
+kotlin {
+  compilerOptions {
+    freeCompilerArgs = listOf("-Xcontext-receivers")
+  }
+}
+
 sourdoughApp {
   mainClassName.set("io.bkbn.sourdough.api.ApiKt")
 }
