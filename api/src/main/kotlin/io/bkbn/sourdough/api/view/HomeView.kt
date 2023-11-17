@@ -9,10 +9,12 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import kotlinx.html.body
 import kotlinx.html.button
+import kotlinx.html.classes
 import kotlinx.html.code
 import kotlinx.html.div
 import kotlinx.html.h1
 import kotlinx.html.id
+import kotlinx.html.img
 import kotlinx.html.p
 import kotlinx.html.pre
 
@@ -34,6 +36,12 @@ object HomeView : View {
               +"""
                 Occasionally I write things, more often I code things.
               """.trimIndent()
+            }
+            div(classes = "centered-image-container") {
+              img(classes = "centered-image rounded-corners") {
+                src = "/static/images/bat-eating-banana.jpg"
+                alt = "A bat eating a banana"
+              }
             }
             div(classes = "code-block") {
               pre {

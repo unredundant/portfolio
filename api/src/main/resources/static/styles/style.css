@@ -61,3 +61,19 @@ p.nav-link {
 	font-weight: bolder;
 	cursor: pointer;
 }
+
+img.centered-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+img.rounded-corners {
+	border-radius: 25px;
+}
+
+div.centered-image-container {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
