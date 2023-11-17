@@ -1,11 +1,8 @@
-rootProject.name = "portfolio-backend"
+rootProject.name = "portfolio"
 
-include("app")
 include("api")
-include("cli")
 include("client")
 include("domain")
-include("lib")
 include("persistence")
 
 // Feature Previews
@@ -104,51 +101,33 @@ dependencyResolutionManagement {
       )
 
       // Ktor Server
-      library("ktor-server-core", "io.ktor", "ktor-server-core").version(ktorVersion)
-      library("ktor-server-call-logging", "io.ktor", "ktor-server-call-logging").version(ktorVersion)
-      library("ktor-server-cio", "io.ktor", "ktor-server-cio").version(ktorVersion)
-      library("ktor-server-auth", "io.ktor", "ktor-server-auth").version(ktorVersion)
-      library("ktor-server-auth-jwt", "io.ktor", "ktor-server-auth-jwt").version(ktorVersion)
-      library("ktor-serialization", "io.ktor", "ktor-serialization").version(ktorVersion)
-      library("ktor-server-status-pages", "io.ktor", "ktor-server-status-pages").version(ktorVersion)
-      library("ktor-server-content-negotiation", "io.ktor", "ktor-server-content-negotiation").version(ktorVersion)
-      library("ktor-serialization-kotlinx-json", "io.ktor", "ktor-serialization-kotlinx-json").version(ktorVersion)
-      bundle(
-        "ktor-server",
-        listOf(
-          "ktor-server-core",
-          "ktor-server-call-logging",
-          "ktor-server-cio",
-          "ktor-server-auth",
-          "ktor-server-auth-jwt",
-          "ktor-serialization",
-          "ktor-server-status-pages",
-          "ktor-server-content-negotiation",
-          "ktor-serialization-kotlinx-json",
-          "kompendium-core",
-        )
+      val ktorServerLibraries = listOf(
+        "ktor-server-core",
+        "ktor-server-call-logging",
+        "ktor-server-cio",
+        "ktor-server-auth",
+        "ktor-server-auth-jwt",
+        "ktor-serialization",
+        "ktor-server-status-pages",
+        "ktor-server-content-negotiation",
+        "ktor-serialization-kotlinx-json",
+        "ktor-server-html-builder"
       )
+      ktorServerLibraries.forEach { library(it, "io.ktor", it).version(ktorVersion) }
+      bundle("ktor-server", ktorServerLibraries.plus("kompendium-core"))
 
       // Ktor Client
-      library("ktor-client-core", "io.ktor", "ktor-client-core").version(ktorVersion)
-      library("ktor-client-cio", "io.ktor", "ktor-client-cio").version(ktorVersion)
-      library("ktor-client-logging", "io.ktor", "ktor-client-logging").version(ktorVersion)
-      library("ktor-client-encoding", "io.ktor", "ktor-client-encoding").version(ktorVersion)
-      library("ktor-client-content-negotiation", "io.ktor", "ktor-client-content-negotiation").version(ktorVersion)
-      library("ktor-serialization-kotlinx-json", "io.ktor", "ktor-serialization-kotlinx-json").version(ktorVersion)
-      library("ktor-client-serialization", "io.ktor", "ktor-client-serialization").version(ktorVersion)
-      bundle(
-        "ktor-client",
-        listOf(
-          "ktor-client-core",
-          "ktor-client-cio",
-          "ktor-client-logging",
-          "ktor-client-encoding",
-          "ktor-client-content-negotiation",
-          "ktor-serialization-kotlinx-json",
-          "ktor-client-serialization",
-        )
+      val ktorClientLibraries = listOf(
+        "ktor-client-core",
+        "ktor-client-cio",
+        "ktor-client-logging",
+        "ktor-client-encoding",
+        "ktor-client-content-negotiation",
+        "ktor-serialization-kotlinx-json",
+        "ktor-client-serialization",
       )
+      ktorClientLibraries.forEach { library(it, "io.ktor", it).version(ktorVersion) }
+      bundle("ktor-client", ktorClientLibraries)
 
       // Postgres Driver
       library("postgres-driver", "org.postgresql", "postgresql").version(postgresDriverVersion)
