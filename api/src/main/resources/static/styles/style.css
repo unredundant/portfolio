@@ -34,6 +34,7 @@ p.subtitle {
 }
 
 div.container {
+	min-width: 700px;
 	max-width: 1500px;
 	margin: auto;
 	background-color: #0A1F0A;

@@ -35,7 +35,7 @@ object ViewUtils {
     }
   }
 
-  fun HEAD.loadHighlightJS() {
+  private fun HEAD.loadHighlightJS() {
     script {
       src = "/static/scripts/highlight.min.js"
     }
