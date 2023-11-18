@@ -29,7 +29,7 @@ This will give you a minimal (but fully documented) API out-of-the-box. Simply c
 
 Once you have done those two things, go ahead and navigate to `localhost:8080/docs`. You should see an API documentation page
 
-<!-- <Image src={sourdoughExampleDocs} /> -->
+<img src="/blah/blah" alt="blah">
 
 ## But How?
 

@@ -40,6 +40,33 @@ p.subtitle {
 	text-align: center;
 }
 
+h1.subtitle {
+	color: #29BB1B;
+	font-size: x-large;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-right: 25px;
+	text-align: left;
+}
+
+h2.subtitle {
+	color: #29BB1B;
+	font-size: large;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-right: 25px;
+	text-align: left;
+}
+
+h3.subtitle {
+	color: #29BB1B;
+	font-size: medium;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-right: 25px;
+	text-align: left;
+}
+
 a.no-style:link {
 	text-decoration: inherit;
 	color: inherit;

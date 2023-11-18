@@ -29,8 +29,8 @@ object ArticlesView : View {
         }
         p(classes = "subtitle") {
           +"""
-                  You probably don't need to read these.
-                """.trimIndent()
+            You probably don't need to read these.
+          """.trimIndent()
         }
         table {
           postMetadata.forEach { post ->

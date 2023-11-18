@@ -6,6 +6,7 @@ import io.bkbn.sourdough.api.view.ViewUtils.configureHead
 import io.bkbn.sourdough.api.view.article.ArticleUtils.getPostMetadata
 import io.bkbn.sourdough.api.view.article.ArticleUtils.markdownFlavour
 import io.bkbn.sourdough.api.view.component.NavbarComponent
+import kotlinx.html.BODY
 import java.io.File
 import kotlinx.html.HTML
 import kotlinx.html.body
@@ -26,18 +27,21 @@ class ArticleView(private val slug: String) : View {
         h1(classes = "title") {
           +metadata.frontMatter.title
         }
-        unsafe {
-          raw(content)
-        }
+        renderDocument(content)
       }
     }
   }
 
   private fun loadBlogContent(slug: String): Pair<ArticleModels.ArticleMetadata, String> {
     val file = File(this.javaClass.getResource("/static/posts/$slug.md")?.toURI() ?: error("Post not found :("))
+    val content = file.readText()
     val metadata = getPostMetadata(file)
-    val rootNode = MarkdownParser(markdownFlavour).buildMarkdownTreeFromString(file.readText())
-    val content = HtmlGenerator(file.readText(), rootNode, markdownFlavour).generateHtml()
     return metadata to content
+  }
+
+  context(BODY)
+  private fun renderDocument(content: String) {
+    val rootNode = MarkdownParser(markdownFlavour).buildMarkdownTreeFromString(content)
+    MarkdownRenderer.generateHtml(content, rootNode)
   }
 }

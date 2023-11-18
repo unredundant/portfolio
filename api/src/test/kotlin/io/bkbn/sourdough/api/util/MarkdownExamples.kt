@@ -18,5 +18,4 @@ object MarkdownExamples {
 
     This is another test
   """.trimIndent()
-
 }

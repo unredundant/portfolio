@@ -1,5 +1,4 @@
 ---
-author: Ryan Brink
 date: 2022-02-04
 title: "Give Me Satisfaketion"
 description: "Writing a composable data faker in Kotlin"
