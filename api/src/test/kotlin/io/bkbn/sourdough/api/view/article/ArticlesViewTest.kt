@@ -1,5 +1,7 @@
 package io.bkbn.sourdough.api.view.article
 
+import io.bkbn.sourdough.api.util.MarkdownExamples.basicMarkdownExample
+import io.bkbn.sourdough.api.view.article.ArticleUtils.markdownFlavour
 import io.bkbn.sourdough.api.view.article.ArticleUtils.retrieveBlogFrontMatter
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
@@ -11,28 +13,11 @@ class ArticlesViewTest : DescribeSpec({
   describe("Markdown Processing") {
     it("can retrieve the metadata attached to a blog post") {
       // Arrange
-
-      // language=md
-      val src = """
-        ---
-        title: "Test Title"
-        description: "Test Description"
-        date: "2069-04-20"
-        ---
-
-        # Blah
-
-        This is a test
-
-        ## McBlah
-
-        This is another test
-      """.trimIndent()
-      val flavour = GFMFlavourDescriptor()
-      val rootNode = MarkdownParser(flavour).buildMarkdownTreeFromString(src)
+      val content = basicMarkdownExample
+      val rootNode = MarkdownParser(markdownFlavour).buildMarkdownTreeFromString(content)
 
       // Act
-      val result = retrieveBlogFrontMatter(rootNode, src)
+      val result = retrieveBlogFrontMatter(rootNode, content)
 
       // Assert
       result.title shouldBe "Test Title"

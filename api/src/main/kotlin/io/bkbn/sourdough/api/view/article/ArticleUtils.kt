@@ -10,9 +10,11 @@ import org.intellij.markdown.flavours.gfm.GFMFlavourDescriptor
 import org.intellij.markdown.parser.MarkdownParser
 
 internal object ArticleUtils {
+
+  val markdownFlavour = GFMFlavourDescriptor()
+
   fun getPostMetadata(file: File): ArticleModels.ArticleMetadata {
-    val flavour = GFMFlavourDescriptor()
-    val rootNode = MarkdownParser(flavour).buildMarkdownTreeFromString(file.readText())
+    val rootNode = MarkdownParser(markdownFlavour).buildMarkdownTreeFromString(file.readText())
     return ArticleModels.ArticleMetadata(
       retrieveBlogFrontMatter(rootNode, file.readText()),
       file.name.removeSuffix(".md")

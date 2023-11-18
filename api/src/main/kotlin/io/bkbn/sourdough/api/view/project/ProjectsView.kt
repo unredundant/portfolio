@@ -20,8 +20,8 @@ object ProjectsView : View {
         }
         p(classes = "subtitle") {
           +"""
-                Wee little curiosities
-              """.trimIndent()
+            Wee little curiosities
+          """.trimIndent()
         }
       }
     }

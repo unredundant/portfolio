@@ -24,6 +24,8 @@ import org.slf4j.event.Level
 import kotlin.reflect.typeOf
 
 fun main() {
+  // Doesn't Work?
+  // System.setProperty("io.ktor.development", "true")
   embeddedServer(
     CIO,
     host = "0.0.0.0",
