@@ -2,6 +2,7 @@
 date: 2022-08-16
 title: "Write Code, Get Docs"
 description: "Painless Ktor API Documentation"
+status: published
 ---
 
 [Ktor](https://ktor.io/) has long been one of my favorite web frameworks. It's concise DSL,

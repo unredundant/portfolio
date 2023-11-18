@@ -1,32 +1,57 @@
 ---
 date: 2023-11-18
 title: The Backend Strikes Back
-description: The best JS is (almost) no JS
+description: HyperText is (almost) all you need
+status: draft
 ---
 
-Copilot wanted the description to be "the backend is the best end".  I can't disagree.
+I got my first taste of web dev in high school, on my schools robotics team... we needed a website,
+and the teacher wouldn't let me embed the he-man heyyeayea song into the site, so I went and made a
+second site, one where I could do whatever I damn pleased, one that capture the essence of a weird
+teenage boy with a lot of time on his hands.
 
-I've written many a portfolio site over the years.  
+I wish I still had that source code, as that was by far the most fun I would have in web development for the next
+decade.
 
-Or should I say... I've copy and pasted many a portfolio site.  The first was some crappy HTML site 
-back in high school.  Then came the business-casual Bootstrap portfolio.  At some point, tailwind took 
-over and I copy and pasted some of that.
+Alas, this was back before this anyone ever told me about version control.
 
-All of them were horrible in their own way.  The first... well... actually the first was pretty awesome.  I remember
-FTP'ing the He-man heyyeyaaeyaa song to the server and having a little bit of JavaScript that would play the song 
-if the user entered the konomi code.  Yea I was that guy... 
+The next decade of my life was spent in the world of servers, not having to deal with the avalanche of
+"progress" happening on the frontend side.
 
-But anyway... since that incredibly cool and popular peak, my interactions with JavaScript have steadily declined
-into a sort of overwhelming confusing about the state of the industry... 
+I use progress here in quotes, not to demean all the hard work and impressive feats of engineering that
+have occurred in the world of JavaScript, but more to wonder if perhaps, some of us have lost the plot
+a bit.
 
-I'll skip over the rest of the JavaScript hate because if you're deep enough down the tech rabbit hole to have stumbled 
-across my blog, you already know all the things I could say.  Suffice to say... I'm out, I'm officially done with JavaScript.
+Why is it, that the last three times I've gone to create a portfolio site, my search has _begun_ with some variant
+of the blursed `npx create` command. Don't I just need some HTML... a couple API endpoints and maybe a dash (dare I say
+a sprinkle) of reactivity?
 
-(Oh and that thing you call TypeScript... that's JavaScript)
+I had this realization while staring at an email from a founder, someone who had stumbled across my latest portfolio,
+and was deeply impressed with the frontend "skills" possessed by yours truly.
 
-And following that critical decision... a funny thing happened.  I fell back in love with web development.
+Embed this https://www.youtube.com/watch?v=ToQVoyWWluQ
 
-I started to write this new portfolio, using a tech stack that I love, and, by god... it's awesome.  It's not "good" looking,
-it's super lo-fi... and it doesn't _do_ much (yet)... but, it's mine.  I _actually_ made this.  I didn't copy and paste
-huge swaths of React "components".  I didn't `npx create` anything.  I wrote this.  And maybe... _just_ maybe... I'll dig
-into more about this site in a future post :) 
+Dear reader, I have never felt like more of a phony. This was not something I had created, in any sense of the word.
+
+It was merely a clone of a Tailwind template, something where I had little to no clue how the slightest bit of it
+worked.
+
+As evidence... [here](https://github.com/vercel/next.js/issues/58515) is an issue I opened with the NextJS team due to a
+complete inability of mine to redirect to a new page. At the time of writing this, I'm still not sure if that is an
+actual bug, or, if the server / client voodoo that NextJS does is just too opaque, and I was missing some magic function
+(or worse, string tag) that would have made it all work.
+
+BTW, as a rule, I think if you are at the point in your framework where you are asking people to use random strings as
+the first line in a function to indicate whether code should run on the server or the client... you have really taken
+a wrong turn. But I digress.
+
+I'm not here to bash on NextJS... I'm here to no longer look at myself in the mirror and see a great big front-end phony.
+
+I want to build (truly build) a portfolio site that I can be proud of, and to do it my way.  One that doesn't involve 
+gigantic frameworks full of magic just to serve a user some text.  Not full of perfectly crafted CSS, tailored to soothe 
+the user into maximally consumerist stupor... 
+
+I want to build a site that is as simple as possible... one with a server, that sends some data to a client, and Reacts (heh)
+when (and only when) absolutely necessary.  
+
+So I built the damn thing in Kotlin, HTMX and pure CSS.  And I'm damn proud of the little bastard. 

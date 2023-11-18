@@ -2,6 +2,7 @@
 date: 2022-02-04
 title: "Give Me Satisfaketion"
 description: "Writing a composable data faker in Kotlin"
+status: published
 ---
 
 At some point, every developer out there as had the need to get their hands on some dummy data. More often than not,
