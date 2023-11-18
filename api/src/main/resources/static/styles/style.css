@@ -1,3 +1,10 @@
+/*
+kelly green -> #29BB1B
+dark moss green -> #005D00
+dark green -> #002600
+office green -> #002600
+SGBUS green -> #07EA16
+ */
 @font-face {
 	font-family: "3720-Propo";
 	src: url('/static/fonts/3270/3270NerdFontPropo-Regular.ttf');
@@ -31,6 +38,33 @@ p.subtitle {
 	margin-left: 25px;
 	margin-right: 25px;
 	text-align: center;
+}
+
+a.no-style:link {
+	text-decoration: inherit;
+	color: inherit;
+	cursor: pointer;
+}
+
+td.blog-column {
+	padding: 5px 15px;
+}
+
+a.no-style:visited {
+	text-decoration: inherit;
+	color: inherit;
+	cursor: pointer;
+}
+
+p.blog-title {
+	font-size: large;
+	font-weight: bold;
+	color: #07EA16;
+}
+
+p.blog-metadata {
+	color: #267E12;
+	font-size: medium;
 }
 
 div.container {
@@ -76,4 +110,8 @@ img.rounded-corners {
 div.centered-image-container {
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+ul {
+	list-style-type: none;
 }

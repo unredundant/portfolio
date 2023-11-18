@@ -10,7 +10,6 @@ import io.ktor.server.routing.get
 import kotlinx.html.a
 import kotlinx.html.body
 import kotlinx.html.button
-import kotlinx.html.classes
 import kotlinx.html.code
 import kotlinx.html.div
 import kotlinx.html.h1

@@ -37,6 +37,12 @@ dependencies {
 
   // Logging
   implementation(libs.kermit)
+
+  // Markdown
+  implementation("org.jetbrains:markdown:0.5.0")
+
+  // YAML
+  implementation("net.mamoe.yamlkt:yamlkt:0.13.0")
 }
 
 testing {
