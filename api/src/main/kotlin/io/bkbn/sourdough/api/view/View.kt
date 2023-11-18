@@ -1,8 +1,8 @@
 package io.bkbn.sourdough.api.view
 
-import io.ktor.server.routing.Route
+import kotlinx.html.HTML
 
 fun interface View {
-  context(Route)
+  context(HTML)
   fun render()
 }

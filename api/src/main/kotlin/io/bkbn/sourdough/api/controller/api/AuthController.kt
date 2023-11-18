@@ -1,4 +1,4 @@
-package io.bkbn.sourdough.api.controller
+package io.bkbn.sourdough.api.controller.api
 
 import io.bkbn.sourdough.api.model.AuthModels
 import io.bkbn.sourdough.api.service.AuthService

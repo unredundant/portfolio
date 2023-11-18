@@ -4,8 +4,8 @@ import io.bkbn.kompendium.core.plugin.NotarizedApplication
 import io.bkbn.kompendium.core.routes.redoc
 import io.bkbn.kompendium.json.schema.definition.TypeDefinition
 import io.bkbn.kompendium.oas.serialization.KompendiumSerializersModule
-import io.bkbn.sourdough.api.controller.AuthController.authHandler
-import io.bkbn.sourdough.api.controller.WebController.webHandler
+import io.bkbn.sourdough.api.controller.api.AuthController.authHandler
+import io.bkbn.sourdough.api.controller.ViewController.viewHandler
 import io.bkbn.sourdough.api.documentation.DocumentationUtils
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
@@ -15,6 +15,7 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.http.content.staticResources
 import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import kotlinx.datetime.Instant
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -50,14 +51,12 @@ private fun Application.mainModule() {
       typeOf<Instant>() to TypeDefinition("string", "date-time")
     )
   }
-  apiRoutes()
-}
-
-private fun Application.apiRoutes() {
   routing {
     redoc(pageTitle = "Portfolio Backend Docs")
     staticResources("/static", "static")
-    authHandler()
-    webHandler()
+    viewHandler()
+    route("/api") {
+      authHandler()
+    }
   }
 }

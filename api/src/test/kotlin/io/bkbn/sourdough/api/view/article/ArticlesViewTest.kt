@@ -1,5 +1,6 @@
-package io.bkbn.sourdough.api.view
+package io.bkbn.sourdough.api.view.article
 
+import io.bkbn.sourdough.api.view.article.ArticleUtils.retrieveBlogFrontMatter
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.datetime.LocalDate
@@ -31,7 +32,7 @@ class ArticlesViewTest : DescribeSpec({
       val rootNode = MarkdownParser(flavour).buildMarkdownTreeFromString(src)
 
       // Act
-      val result = ArticlesView.retrieveBlogFrontMatter(rootNode, src)
+      val result = retrieveBlogFrontMatter(rootNode, src)
 
       // Assert
       result.title shouldBe "Test Title"
