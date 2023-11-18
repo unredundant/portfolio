@@ -36,13 +36,10 @@ class MarkdownRendererTest : DescribeSpec({
             <link rel="stylesheet" href="/static/styles/xt256-highlight.css" type="text/css">
           </head>
           <body>
-            <h1>Blah</h1>
-        <br><br>
-            <p>This is a test</p>
-        <br><br>
-            <h2>McBlah</h2>
-        <br><br>
-            <p>This is another test</p>
+            <h1 class="subtitle">Blah</h1>
+            <p class="blog-metadata">This is a test</p>
+            <h2 class="subtitle">McBlah</h2>
+            <p class="blog-metadata">This is another test</p>
           </body>
         </html>
       """.trimIndent()
