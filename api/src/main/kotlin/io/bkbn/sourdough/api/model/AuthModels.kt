@@ -29,24 +29,12 @@ object AuthModels {
   )
 
   /**
-   * Represents a sign in request.
+   * Represents a request to authenticate a user.
    * @property email The email of the user trying to sign in.
    * @property password The password of the user trying to sign in.
    */
   @Serializable
-  data class SignInRequest(
-    val email: String,
-    val password: String,
-  )
-
-  /**
-   * Represents a sign up request to create a new user account.
-   *
-   * @property email The email address of the user.
-   * @property password The password for the user account.
-   */
-  @Serializable
-  data class SignUpRequest(
+  data class AuthRequest(
     val email: String,
     val password: String,
   )

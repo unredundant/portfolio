@@ -21,6 +21,7 @@ object NavbarComponent {
           ).forEach { (name, url) ->
             p(classes = "nav-link") {
               attributes["hx-get"] = url
+              attributes["hx-boost"] = "true"
               attributes["hx-push-url"] = "true"
               attributes["hx-swap"] = "outerHTML"
               attributes["hx-target"] = "body"

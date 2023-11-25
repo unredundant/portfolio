@@ -111,7 +111,8 @@ dependencyResolutionManagement {
         "ktor-server-status-pages",
         "ktor-server-content-negotiation",
         "ktor-serialization-kotlinx-json",
-        "ktor-server-html-builder"
+        "ktor-server-html-builder",
+        "ktor-server-sessions",
       )
       ktorServerLibraries.forEach { library(it, "io.ktor", it).version(ktorVersion) }
       bundle("ktor-server", ktorServerLibraries.plus("kompendium-core"))

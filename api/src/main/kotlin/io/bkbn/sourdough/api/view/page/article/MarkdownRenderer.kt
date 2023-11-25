@@ -1,9 +1,7 @@
-package io.bkbn.sourdough.api.view.article
+package io.bkbn.sourdough.api.view.page.article
 
 import kotlinx.html.BODY
 import kotlinx.html.blockQuote
-import kotlinx.html.br
-import kotlinx.html.classes
 import kotlinx.html.code
 import kotlinx.html.div
 import kotlinx.html.h1

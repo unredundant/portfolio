@@ -1,4 +1,4 @@
-package io.bkbn.sourdough.api.view.article
+package io.bkbn.sourdough.api.view.page.article
 
 import io.bkbn.sourdough.api.model.ArticleModels
 import java.io.File

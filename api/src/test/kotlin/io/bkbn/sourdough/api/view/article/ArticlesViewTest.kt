@@ -1,12 +1,11 @@
 package io.bkbn.sourdough.api.view.article
 
 import io.bkbn.sourdough.api.util.MarkdownExamples.basicMarkdownExample
-import io.bkbn.sourdough.api.view.article.ArticleUtils.markdownFlavour
-import io.bkbn.sourdough.api.view.article.ArticleUtils.retrieveBlogFrontMatter
+import io.bkbn.sourdough.api.view.page.article.ArticleUtils.markdownFlavour
+import io.bkbn.sourdough.api.view.page.article.ArticleUtils.retrieveBlogFrontMatter
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.datetime.LocalDate
-import org.intellij.markdown.flavours.gfm.GFMFlavourDescriptor
 import org.intellij.markdown.parser.MarkdownParser
 
 class ArticlesViewTest : DescribeSpec({

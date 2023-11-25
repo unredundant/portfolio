@@ -26,13 +26,26 @@ object AuthService {
   private val httpClient = HttpClientFactory.Default
 
   /**
+   * Decodes the provided form data and returns an instance of AuthModels.AuthRequest.
+   *
+   * @param formData The form data to be decoded. It should be in the format "username=value&password=value".
+   * @return Payload containing the decoded username and password.
+   */
+  fun decodeFormData(formData: String): AuthModels.AuthRequest {
+    val (username, password) = formData.split("&").map { it.split("=")[1] }
+    val decodedUsername = java.net.URLDecoder.decode(username, "UTF-8")
+    val decodedPassword = java.net.URLDecoder.decode(password, "UTF-8")
+    return AuthModels.AuthRequest(decodedUsername, decodedPassword)
+  }
+
+  /**
    * Executes the sign-in flow using the provided parameters.
    *
    * @param request The sign-in request containing the user's email and password.
    * @return The PKCE code exchange response containing the authentication token.
    */
   suspend fun executeSignInFlow(
-    request: AuthModels.SignInRequest,
+    request: AuthModels.AuthRequest,
   ): AuthModels.PkceCodeExchangeResponse {
     val (verifier, challenge) = generatePkceChallenge()
 
@@ -63,7 +76,7 @@ object AuthService {
    * @return The response containing the PKCE code exchange data.
    */
   suspend fun executeSignUpFlow(
-    request: AuthModels.SignUpRequest,
+    request: AuthModels.AuthRequest
   ): AuthModels.PkceCodeExchangeResponse {
     val (verifier, challenge) = generatePkceChallenge()
 

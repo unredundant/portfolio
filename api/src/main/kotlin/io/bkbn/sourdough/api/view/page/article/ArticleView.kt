@@ -1,10 +1,11 @@
-package io.bkbn.sourdough.api.view.article
+package io.bkbn.sourdough.api.view.page.article
 
 import io.bkbn.sourdough.api.model.ArticleModels
+import io.bkbn.sourdough.api.model.SessionModels
 import io.bkbn.sourdough.api.view.View
 import io.bkbn.sourdough.api.view.ViewUtils.configureHead
-import io.bkbn.sourdough.api.view.article.ArticleUtils.getPostMetadata
-import io.bkbn.sourdough.api.view.article.ArticleUtils.markdownFlavour
+import io.bkbn.sourdough.api.view.page.article.ArticleUtils.getPostMetadata
+import io.bkbn.sourdough.api.view.page.article.ArticleUtils.markdownFlavour
 import io.bkbn.sourdough.api.view.component.NavbarComponent
 import kotlinx.html.BODY
 import java.io.File
@@ -12,13 +13,10 @@ import kotlinx.html.HTML
 import kotlinx.html.body
 import kotlinx.html.div
 import kotlinx.html.h1
-import kotlinx.html.unsafe
-import org.intellij.markdown.flavours.gfm.GFMFlavourDescriptor
-import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser
 
 class ArticleView(private val slug: String) : View {
-  context(HTML) override fun render() {
+  context(HTML) override fun render(session: SessionModels.UserSession?) {
     val (metadata, content) = loadBlogContent(slug)
     configureHead()
     body {

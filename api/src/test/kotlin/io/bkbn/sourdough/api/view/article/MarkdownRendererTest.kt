@@ -2,6 +2,8 @@ package io.bkbn.sourdough.api.view.article
 
 import io.bkbn.sourdough.api.util.MarkdownExamples.basicMarkdownExample
 import io.bkbn.sourdough.api.view.ViewUtils.configureHead
+import io.bkbn.sourdough.api.view.page.article.ArticleUtils
+import io.bkbn.sourdough.api.view.page.article.MarkdownRenderer
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.html.body

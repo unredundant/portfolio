@@ -16,7 +16,7 @@ Accept: application/json
 	request.variables.set("password", "")
 %}
 
-POST {{portfolio_api_url}}/auth/sign_in
+POST {{portfolio_api_url}}/api/auth/sign_in
 Content-Type: application/json
 
 {
@@ -37,11 +37,11 @@ Content-Type: application/json
 		return randomString;
 	}
 
-	request.variables.set("email", `admin+${randomString(10)}@example.com`)
+	request.variables.set("email", `admin@example.com`)
 	request.variables.set("password", "test")
 %}
 
-POST {{portfolio_api_url}}/auth/sign_up
+POST {{portfolio_api_url}}/api/auth/sign_up
 Content-Type: application/json
 
 {

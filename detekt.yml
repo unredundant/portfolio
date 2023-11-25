@@ -7,6 +7,8 @@ complexity:
 
 style:
   MaxLineLength:
-    excludes: ['**/test/**/*', '**/testIntegration/**/*']
+    excludes: [ '**/test/**/*', '**/testIntegration/**/*' ]
     active: true
     maxLineLength: 120
+  ForbiddenComment:
+    allowedPatterns: 'TODO'

@@ -7,6 +7,7 @@ import io.bkbn.kompendium.oas.serialization.KompendiumSerializersModule
 import io.bkbn.sourdough.api.controller.api.AuthController.authHandler
 import io.bkbn.sourdough.api.controller.ViewController.viewHandler
 import io.bkbn.sourdough.api.documentation.DocumentationUtils
+import io.bkbn.sourdough.api.model.SessionModels
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -17,6 +18,12 @@ import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
+import io.ktor.server.sessions.SessionStorageMemory
+import io.ktor.server.sessions.SessionTransportTransformerEncrypt
+import io.ktor.server.sessions.SessionTransportTransformerMessageAuthentication
+import io.ktor.server.sessions.Sessions
+import io.ktor.server.sessions.cookie
+import io.ktor.util.hex
 import kotlinx.datetime.Instant
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -52,6 +59,17 @@ private fun Application.mainModule() {
     customTypes = mapOf(
       typeOf<Instant>() to TypeDefinition("string", "date-time")
     )
+  }
+  install(Sessions) {
+    // TODO: Move to env vars
+    val secretEncryptKey = hex("00112233445566778899aabbccddeeff")
+    val secretSignKey = hex("6819b57a326945c1968f45236589")
+    cookie<SessionModels.UserSession>("user_session") {
+      cookie.path = "/"
+      cookie.extensions["SameSite"] = "Strict"
+      cookie.httpOnly = true
+      transform(SessionTransportTransformerEncrypt(secretEncryptKey, secretSignKey))
+    }
   }
   routing {
     redoc(pageTitle = "Portfolio Backend Docs")
