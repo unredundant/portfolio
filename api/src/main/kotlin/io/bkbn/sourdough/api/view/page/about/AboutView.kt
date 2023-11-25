@@ -22,8 +22,8 @@ object AboutView : View {
         }
         p(classes = "subtitle") {
           +"""
-                Don't worry about it
-              """.trimIndent()
+            Don't worry about it
+          """.trimIndent()
         }
       }
     }

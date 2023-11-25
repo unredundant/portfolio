@@ -55,9 +55,8 @@ object ViewController {
 
   // TODO: Rethink term "static" vs "dynamic" here... it's not quite right
   private fun Route.renderStaticView(view: View) = get {
+    val userSession = call.sessions.get<SessionModels.UserSession>()
     call.respondHtml {
-      val userSession = call.sessions.get<SessionModels.UserSession>()
-      println(userSession)
       view.render(userSession)
     }
   }

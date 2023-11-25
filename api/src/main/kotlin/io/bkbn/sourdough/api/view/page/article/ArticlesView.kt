@@ -36,11 +36,14 @@ object ArticlesView : View {
         table {
           postMetadata.forEach { post ->
             tr {
+              attributes["hx-get"] = "/articles/${post.slug}"
+              attributes["hx-boost"] = "true"
+              attributes["hx-push-url"] = "true"
+              attributes["hx-swap"] = "outerHTML"
+              attributes["hx-target"] = "body"
               td(classes = "blog-column") {
-                a(classes = "no-style", href = "/articles/${post.slug}") {
-                  p(classes = "blog-title") {
-                    +post.frontMatter.title
-                  }
+                p(classes = "blog-title") {
+                  +post.frontMatter.title
                 }
               }
               td(classes = "blog-column") {
