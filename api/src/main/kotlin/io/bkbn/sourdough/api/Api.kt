@@ -18,6 +18,7 @@ import io.ktor.server.http.content.staticResources
 import io.ktor.server.plugins.cachingheaders.CachingHeaders
 import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.server.routing.Routing
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import io.ktor.server.sessions.SessionTransportTransformerEncrypt
@@ -33,8 +34,6 @@ import kotlin.time.Duration.Companion.days
 import kotlin.time.DurationUnit
 
 fun main() {
-  // Doesn't Work?
-  // System.setProperty("io.ktor.development", "true")
   embeddedServer(
     CIO,
     host = "0.0.0.0",
@@ -76,22 +75,26 @@ private fun Application.mainModule() {
   }
   routing {
     redoc(pageTitle = "Portfolio Backend Docs")
-    staticResources("/static", "static") {
-      cacheControl { url ->
-        when {
-          url.file.contains("static/images") || url.file.contains("static/fonts") -> {
-            return@cacheControl listOf(CacheControl.MaxAge(365.days.toInt(DurationUnit.SECONDS)))
-          }
-
-          else -> {
-            return@cacheControl emptyList()
-          }
-        }
-      }
-    }
+    staticResourceHandler()
     viewHandler()
     route("/api") {
       authHandler()
+    }
+  }
+}
+
+private fun Routing.staticResourceHandler() {
+  staticResources("/static", "static") {
+    cacheControl { url ->
+      when {
+        url.file.contains("static/images") || url.file.contains("static/fonts") -> {
+          return@cacheControl listOf(CacheControl.MaxAge(365.days.toInt(DurationUnit.SECONDS)))
+        }
+
+        else -> {
+          return@cacheControl emptyList()
+        }
+      }
     }
   }
 }
