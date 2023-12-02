@@ -8,12 +8,14 @@ import io.bkbn.sourdough.api.controller.api.AuthController.authHandler
 import io.bkbn.sourdough.api.controller.ViewController.viewHandler
 import io.bkbn.sourdough.api.documentation.DocumentationUtils
 import io.bkbn.sourdough.api.model.SessionModels
+import io.ktor.http.CacheControl
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.cio.CIO
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.http.content.staticResources
+import io.ktor.server.plugins.cachingheaders.CachingHeaders
 import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.routing.route
@@ -29,6 +31,10 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import org.slf4j.event.Level
 import kotlin.reflect.typeOf
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.days
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.DurationUnit
 
 fun main() {
   // Doesn't Work?
@@ -43,6 +49,7 @@ fun main() {
 
 @OptIn(ExperimentalSerializationApi::class)
 private fun Application.mainModule() {
+  install(CachingHeaders)
   install(CallLogging) {
     level = Level.DEBUG
   }
@@ -73,7 +80,19 @@ private fun Application.mainModule() {
   }
   routing {
     redoc(pageTitle = "Portfolio Backend Docs")
-    staticResources("/static", "static")
+    staticResources("/static", "static") {
+      cacheControl { url ->
+        when {
+          url.file.contains("static/images") || url.file.contains("static/fonts") -> {
+            return@cacheControl listOf(CacheControl.MaxAge(365.days.toInt(DurationUnit.SECONDS)))
+          }
+
+          else -> {
+            return@cacheControl emptyList()
+          }
+        }
+      }
+    }
     viewHandler()
     route("/api") {
       authHandler()

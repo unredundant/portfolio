@@ -4,11 +4,10 @@ import io.bkbn.sourdough.api.model.ArticleModels
 import io.bkbn.sourdough.api.model.SessionModels
 import io.bkbn.sourdough.api.view.View
 import io.bkbn.sourdough.api.view.ViewUtils.configureHead
-import io.bkbn.sourdough.api.view.page.article.ArticleUtils.getPostMetadata
 import io.bkbn.sourdough.api.view.component.NavbarComponent
+import io.bkbn.sourdough.api.view.page.article.ArticleUtils.getPostMetadata
 import java.io.File
 import kotlinx.html.HTML
-import kotlinx.html.a
 import kotlinx.html.body
 import kotlinx.html.div
 import kotlinx.html.h1
