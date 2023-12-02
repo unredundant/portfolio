@@ -1,10 +1,9 @@
 package io.bkbn.sourdough.api.service
 
 import co.touchlab.kermit.Logger
-import io.bkbn.sourdough.api.config.AuthConfig
-import io.bkbn.sourdough.api.config.AuthConfig.EdgeDb.BASE_AUTH_EXTENSION_URL
 import io.bkbn.sourdough.api.model.AuthModels
 import io.bkbn.sourdough.client.HttpClientFactory
+import io.bkbn.sourdough.persistence.EdgeDbConfig
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.post
@@ -53,16 +52,16 @@ object AuthService {
       email = request.email,
       password = request.password,
       challenge = challenge,
-      provider = AuthConfig.EdgeDb.AUTH_PROVIDER_NAME
+      provider = EdgeDbConfig.authExtensionUrl
     )
 
-    val verificationResponse = httpClient.post("$BASE_AUTH_EXTENSION_URL/authenticate") {
+    val verificationResponse = httpClient.post("${EdgeDbConfig.authExtensionUrl}/authenticate") {
       setBody(verificationRequest)
     }
 
     when (verificationResponse.status.value) {
       HttpStatusCode.OK.value -> Logger.d { "Successfully verified user" }
-      else -> error("Failed to verify user")
+      else -> error("Failed to verify user: ${verificationResponse.status.value} ${verificationResponse.body<String>()}")
     }
 
     val body = verificationResponse.body<AuthenticationResponse>()
@@ -84,17 +83,17 @@ object AuthService {
       email = request.email,
       password = request.password,
       challenge = challenge,
-      provider = AuthConfig.EdgeDb.AUTH_PROVIDER_NAME,
+      provider = EdgeDbConfig.authProvider,
       verifyUrl = "http://localhost:8080/auth/verify"
     )
 
-    val registrationResponse = httpClient.post("$BASE_AUTH_EXTENSION_URL/register") {
+    val registrationResponse = httpClient.post("${EdgeDbConfig.authExtensionUrl}/register") {
       setBody(registrationRequest)
     }
 
     when (registrationResponse.status.value) {
       HttpStatusCode.Created.value -> Logger.d { "Successfully registered user" }
-      else -> error("Failed to register user")
+      else -> error("Failed to register user: ${registrationResponse.status.value} ${registrationResponse.body<String>()}")
     }
 
     val body = registrationResponse.body<AuthenticationResponse>()
@@ -124,7 +123,7 @@ object AuthService {
     verifier: String
   ): AuthModels.PkceCodeExchangeResponse {
     Logger.d { "Exchanging PKCE code for auth token" }
-    val response = httpClient.get("$BASE_AUTH_EXTENSION_URL/token") {
+    val response = httpClient.get("${EdgeDbConfig.authExtensionUrl}/token") {
       url {
         parameters.append("code", code)
         parameters.append("verifier", verifier)

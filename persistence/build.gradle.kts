@@ -1,5 +1,6 @@
 plugins {
   kotlin("jvm")
+  kotlin("plugin.serialization")
   id("com.google.devtools.ksp")
   id("io.bkbn.sourdough.library.jvm")
   id("io.gitlab.arturbosch.detekt")
@@ -19,6 +20,9 @@ dependencies {
 
   // Driver
   implementation(libs.postgres.driver)
+
+  // Serialization
+  implementation(libs.ktx.serialization)
 
   // Pooling
   implementation(libs.r2dbc.pool)
