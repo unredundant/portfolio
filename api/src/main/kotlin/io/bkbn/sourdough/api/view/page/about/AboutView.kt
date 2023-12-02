@@ -1,6 +1,6 @@
 package io.bkbn.sourdough.api.view.page.about
 
-import io.bkbn.sourdough.api.model.SessionModels
+import io.bkbn.sourdough.api.model.UserSession
 import io.bkbn.sourdough.api.view.View
 import io.bkbn.sourdough.api.view.ViewUtils.configureHead
 import io.bkbn.sourdough.api.view.component.NavbarComponent
@@ -11,8 +11,8 @@ import kotlinx.html.h1
 import kotlinx.html.p
 
 object AboutView : View {
-  context(HTML)
-  override fun render(session: SessionModels.UserSession?) {
+  context(HTML, UserSession)
+  override fun render() {
     configureHead()
     body {
       div(classes = "container") {
