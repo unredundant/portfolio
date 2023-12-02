@@ -1,6 +1,6 @@
 package io.bkbn.sourdough.api.view.page
 
-import io.bkbn.sourdough.api.model.SessionModels
+import io.bkbn.sourdough.api.model.UserSession
 import io.bkbn.sourdough.api.view.View
 import io.bkbn.sourdough.api.view.ViewUtils.configureHead
 import io.bkbn.sourdough.api.view.ViewUtils.htmxClick
@@ -16,7 +16,7 @@ import kotlinx.html.img
 import kotlinx.html.p
 
 object HomeView : View {
-  context(HTML) override fun render(session: SessionModels.UserSession?) {
+  context(HTML, UserSession) override fun render() {
     configureHead()
     body {
       div(classes = "container") {
@@ -26,16 +26,6 @@ object HomeView : View {
         }
         p(classes = "subtitle") {
           +"I’m Ryan"
-        }
-
-        if (session?.authToken != null) {
-          p(classes = "subtitle") {
-            +"You are logged in!"
-          }
-        } else {
-          p(classes = "subtitle") {
-            +"You are not logged in"
-          }
         }
 
         p(classes = "subtitle") {

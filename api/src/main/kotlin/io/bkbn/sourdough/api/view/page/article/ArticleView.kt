@@ -1,7 +1,7 @@
 package io.bkbn.sourdough.api.view.page.article
 
 import io.bkbn.sourdough.api.model.ArticleModels
-import io.bkbn.sourdough.api.model.SessionModels
+import io.bkbn.sourdough.api.model.UserSession
 import io.bkbn.sourdough.api.view.View
 import io.bkbn.sourdough.api.view.ViewUtils.configureHead
 import io.bkbn.sourdough.api.view.page.article.ArticleUtils.getPostMetadata
@@ -16,7 +16,7 @@ import kotlinx.html.h1
 import org.intellij.markdown.parser.MarkdownParser
 
 class ArticleView(private val slug: String) : View {
-  context(HTML) override fun render(session: SessionModels.UserSession?) {
+  context(HTML, UserSession) override fun render() {
     val (metadata, content) = loadBlogContent(slug)
     configureHead()
     body {
