@@ -1,7 +1,6 @@
 package io.bkbn.sourdough.api.view.page.article
 
 import io.bkbn.sourdough.api.model.ArticleModels
-import java.io.File
 import net.mamoe.yamlkt.Yaml
 import org.intellij.markdown.MarkdownElementTypes
 import org.intellij.markdown.ast.ASTNode
@@ -13,11 +12,11 @@ internal object ArticleUtils {
 
   val markdownFlavour = GFMFlavourDescriptor()
 
-  fun getPostMetadata(file: File): ArticleModels.ArticleMetadata {
-    val rootNode = MarkdownParser(markdownFlavour).buildMarkdownTreeFromString(file.readText())
+  fun getPostMetadata(slug: String, content: String): ArticleModels.ArticleMetadata {
+    val rootNode = MarkdownParser(markdownFlavour).buildMarkdownTreeFromString(content)
     return ArticleModels.ArticleMetadata(
-      retrieveBlogFrontMatter(rootNode, file.readText()),
-      file.name.removeSuffix(".md")
+      retrieveBlogFrontMatter(rootNode, content),
+      slug
     )
   }
 

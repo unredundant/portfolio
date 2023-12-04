@@ -139,6 +139,11 @@ div.centered-image-container {
 	padding-bottom: 10px;
 }
 
+div.content-div {
+	overflow: auto;
+	border: 2px red solid;
+}
+
 ul {
 	list-style-type: none;
 }

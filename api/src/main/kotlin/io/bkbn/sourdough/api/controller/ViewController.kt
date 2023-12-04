@@ -44,15 +44,6 @@ object ViewController {
         renderStaticRoute(LoginView)
       }
     }
-    post("/clicked") {
-      call.respondHtml(HttpStatusCode.OK) {
-        body {
-          h1(classes = "title") {
-            +"You clicked me!"
-          }
-        }
-      }
-    }
   }
 
   private fun Route.renderStaticRoute(view: View) = get {
