@@ -63,10 +63,11 @@ object ArticlesView : View {
   }
 
   private fun collectPostMetadata(): List<ArticleModels.ArticleMetadata> {
-    val postDirectory = File(this.javaClass.getResource("/static/posts")?.toURI() ?: error("Posts not found :("))
-    return postDirectory.walk()
-      .filter { it.isFile }
-      .map { getPostMetadata(it) }
-      .toList()
+//    val postDirectory = File(this.javaClass.getResource("/static/posts")?.toURI() ?: error("Posts not found :("))
+//    return postDirectory.walk()
+//      .filter { it.isFile }
+//      .map { getPostMetadata(it) }
+//      .toList()
+    return emptyList()
   }
 }
